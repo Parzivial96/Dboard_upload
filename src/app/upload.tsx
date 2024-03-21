@@ -77,7 +77,7 @@ export default function MultiUpload() {
 
   return (
       <div className="container">
-          <h2>Image Upload</h2>
+          <h2>Upload Image</h2>
           <form onSubmit={(event) => handleSubmit(event, 'https://dboard-api.onrender.com/api/uploadNotice', { imageData: image, expiryDate: expiryDate }, setImageLoading)}>
               <div className="form-group">
                   <label htmlFor="image">Select Image:</label>
