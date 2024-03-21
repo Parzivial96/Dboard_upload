@@ -1,4 +1,6 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+"use client";
+
+import { React, useState, ChangeEvent, FormEvent } from 'react';
 
 export default function MultiUpload() {
   const [image, setImage] = useState<string | null>(null);
