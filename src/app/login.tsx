@@ -3,7 +3,11 @@
 import React, { useState } from 'react';
 import MultiUpload from './upload';
 
-const LoginPage = ({ onLoginSuccess }) => {
+interface LoginPageProps {
+  onLoginSuccess: () => void;
+}
+
+const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
