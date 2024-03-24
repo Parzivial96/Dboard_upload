@@ -3,19 +3,19 @@
 import React, { useState } from 'react';
 import MultiUpload from './upload';
 
-const LoginPage = () => {
+const LoginPage = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
     // Hardcoded credentials for demonstration purposes
     const validUsername = 'admin';
-    const validPassword = 'password';
+    const validPassword = 'EEE@2024';
 
     if (username === validUsername && password === validPassword) {
       setIsLoggedIn(true);
+      onLoginSuccess(); // Call the onLoginSuccess callback
     } else {
       alert('Invalid username or password');
     }
@@ -29,18 +29,15 @@ const LoginPage = () => {
     <div className="login-container">
       {!isLoggedIn ? (
         <div className="login-form">
-          <h2>Login</h2>
-          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-          <div className="password-input">
-            <input type={showPassword ? 'text' : 'password'} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={() => setShowPassword(!showPassword)}>{showPassword ? 'Hide' : 'Show'} Password</button>
-          </div>
-          <button onClick={handleLogin}>Login</button>
+          <h2 className="login-title">Login</h2>
+          <input className="input-field" type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input className="input-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <button className="login-button" onClick={handleLogin}>Login</button>
         </div>
       ) : (
         <div className="welcome-message">
-          <h2>Welcome, {username}!</h2>
-          <button onClick={handleLogout}>Logout</button>
+          <h2 className="welcome-title">Welcome, {username}!</h2>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
           <MultiUpload />
         </div>
       )}
@@ -50,48 +47,43 @@ const LoginPage = () => {
           justify-content: center;
           align-items: center;
           height: 100vh;
+          background-color: #f0f0f0;
         }
 
-        .login-form {
-          background-color: #f9f9f9;
+        .login-form, .welcome-message {
+          background-color: #fff;
           padding: 20px;
-          border-radius: 8px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .password-input {
-          position: relative;
+        .login-title, .welcome-title {
+          text-align: center;
+          color: #333;
+          margin-bottom: 20px;
         }
 
-        .password-input input {
-          margin-bottom: 10px;
-          padding: 8px;
-          width: calc(100% - 40px);
+        .input-field {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
           border: 1px solid #ccc;
-          border-radius: 4px;
+          border-radius: 5px;
+          box-sizing: border-box;
         }
 
-        .password-input button {
-          position: absolute;
-          top: 50%;
-          right: 10px;
-          transform: translateY(-50%);
-          background: none;
-          border: none;
-          cursor: pointer;
-          color: #007bff;
-        }
-
-        button {
+        .login-button, .logout-button {
+          width: 100%;
+          padding: 10px;
           background-color: #007bff;
           color: #fff;
           border: none;
-          padding: 8px 16px;
-          border-radius: 4px;
+          border-radius: 5px;
           cursor: pointer;
+          transition: background-color 0.3s ease;
         }
 
-        button:hover {
+        .login-button:hover, .logout-button:hover {
           background-color: #0056b3;
         }
       `}</style>

@@ -3,6 +3,7 @@
 //import Image from "next/image";
 import React, { useState } from 'react';
 import LoginPage from './login';
+import MultiUpload from './upload'
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,8 +22,10 @@ export default function Home() {
         <LoginPage onLoginSuccess={handleLoginSuccess} />
       ) : (
         <>
-          <h1>Welcome to the MultiUpload Page!</h1>
-          <button onClick={handleLogout}>Logout</button>
+          <div className="welcome">
+              <h1>Welcome Admin!</h1>
+              <button onClick={handleLogout}>Logout</button>
+          </div>
           <MultiUpload />
         </>
       )}
