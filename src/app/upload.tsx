@@ -11,6 +11,10 @@ export default function MultiUpload() {
   const [todoExpiryDate, setTodoExpiryDate] = useState<string>('');
   const [todoLoading, setTodoLoading] = useState<boolean>(false);
 
+  const [eventText, setEventText] = useState<string>('');
+  const [eventExpiryDate, setEventExpiryDate] = useState<string>('');
+  const [eventLoading, setEventLoading] = useState<boolean>(false);
+
   const [marqueeText, setMarqueeText] = useState<string>('');
   const [marqueeExpiryDate, setMarqueeExpiryDate] = useState<string>('');
   const [marqueeLoading, setMarqueeLoading] = useState<boolean>(false);
@@ -39,6 +43,14 @@ export default function MultiUpload() {
 
   const handleTodoExpiryDateChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTodoExpiryDate(event.target.value);
+  };
+
+  const handleEventTextChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEventText(event.target.value);
+  };
+
+  const handleEventExpiryDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEventExpiryDate(event.target.value);
   };
 
   const handleMarqueeTextChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -103,10 +115,10 @@ export default function MultiUpload() {
         </button>
       </form>
       <br />
-      <h2>Upload Todo</h2>
+      <h2>Upload Announcement</h2>
       <form onSubmit={(event) => handleSubmit(event, 'https://dboard-api.onrender.com/api/uploadTodo', { textData: todoText, expiryDate: todoExpiryDate }, setTodoLoading)}>
         <div className="form-group">
-          <label htmlFor="todoText">Todo Text:</label>
+          <label htmlFor="todoText">Announcement Text:</label>
           <input type="text" id="todoText" value={todoText} onChange={handleTodoTextChange} />
         </div>
         <div className="form-group">
@@ -114,7 +126,22 @@ export default function MultiUpload() {
           <input type="date" id="todoExpiryDate" value={todoExpiryDate} onChange={handleTodoExpiryDateChange} />
         </div>
         <button type="submit" disabled={todoLoading}>
-          {todoLoading ? 'Uploading...' : 'Upload Todo'}
+          {todoLoading ? 'Uploading...' : 'Upload Announcement'}
+        </button>
+      </form>
+      <br />
+      <h2>Upload Event</h2>
+      <form onSubmit={(event) => handleSubmit(event, 'https://dboard-api.onrender.com/api/uploadEvent', { textData: eventText, expiryDate: eventExpiryDate }, setEventLoading)}>
+        <div className="form-group">
+          <label htmlFor="eventText">Event Text:</label>
+          <input type="text" id="eventText" value={eventText} onChange={handleEventTextChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="eventExpiryDate">Expiry Date:</label>
+          <input type="date" id="eventExpiryDate" value={eventExpiryDate} onChange={handleEventExpiryDateChange} />
+        </div>
+        <button type="submit" disabled={eventLoading}>
+          {eventLoading ? 'Uploading...' : 'Upload Event'}
         </button>
       </form>
       <br />
