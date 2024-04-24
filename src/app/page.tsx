@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import LoginPage from './login';
 import MultiUpload from './upload'
+import Manage from './manage';
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,6 +28,7 @@ export default function Home() {
               <button onClick={handleLogout}>Logout</button>
           </div>
           <MultiUpload />
+          <Manage />
         </>
       )}
     </div>

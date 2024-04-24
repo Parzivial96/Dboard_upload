@@ -1,0 +1,45 @@
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.section-container {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.section-title {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.items-container {
+  margin-top: 10px;
+}
+
+.item {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.banner-image {
+  max-width: 100%; /* Ensure images don't overflow the section */
+  height: auto; /* Maintain aspect ratio */
+}
