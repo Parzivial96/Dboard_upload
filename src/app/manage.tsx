@@ -78,7 +78,7 @@ export default function Manage() {
   const handleDelete = async (endpoint: string, payload: { id: string }) => {
     try {
       const response = await fetch(endpoint, {
-        method: 'DELETE',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
